@@ -1,5 +1,4 @@
-![Uploading image.png…]()
-
+![image](https://github.com/Sh1zo1d/projects/assets/102797488/5ef884c5-976a-4993-87df-e5ba989bdabe)
 
 
 # Описание проекта "Анализ_данных_о_фондах_и_инвестициях"
