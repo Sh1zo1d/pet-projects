@@ -1,3 +1,63 @@
+
+
+
+
+
+# Анализ_данных_о_сердечных_заболеваниях
+
+## Описание проекта
+Нужно разработать модель, которая будет предсказывать вероятность заболевания сердца у пациента по различным признакам
+
+## Навыки и инструменты
+
+* SMOTE
+* SimpleImputer
+* cross_val_score
+* pandas
+* ProfileReport
+* os
+* numpy
+* RandomForestClassifier
+* DecisionTreeClassifier
+* GridSearchCV
+* train_test_split
+* balanced_accuracy_score
+* accuracy_score
+* f1_score
+* precision_score
+* recall_score
+* fbeta_score
+* roc_auc_score
+* collections.Counter
+* seaborn
+* warnings
+* matplotlib.pyplot
+* OneHotEncoder
+* BinaryEncoder
+* plot_roc_curve
+* plot_confusion_matrix
+* import optuna
+* classification_report
+* SVC
+* KNeighborsClassifier
+* shuffle
+* classification_report,roc_curve
+
+## Общий вывод
+
+Лучшая модель:
+
+* RandomForestClassifier - Recall - 88.2%
+
+
+
+
+
+
+
+
+<!--
+
 # Описание преокта
 
 Данные- https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data 
