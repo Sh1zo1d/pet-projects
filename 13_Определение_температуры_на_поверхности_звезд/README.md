@@ -1,3 +1,66 @@
+# Определение_температуры_на_поверхности_звезд
+
+## Описание проекта
+С помощью нейросети определять температуру на поверхности обнаруженных звезд
+
+## Навыки и инструменты
+
+* pandas 
+* torch
+* numpy 
+* from sklearn.model_selection.train_test_split
+* matplotlib.pyplot
+* ProfileReport
+* warnings
+* collections import Counter
+* re
+* scipy.stats
+* fuzzywuzzy.fuzz
+* fuzzywuzzy.process
+* OneHotEncoder
+* StandardScaler
+* sklearn.cluster.KMeans
+* sklearn.compose.ColumnTransformer
+* Pipeline
+* torch.nn
+* torch
+* math.ceil
+* torch.optim.Adam
+* sklearn.metrics.mean_squared_error
+* sklearn.compose.make_column_transformer
+
+
+## Общий вывод
+
+Наименьший RMSE равен около 4064.127, к которому я пришел с:
+
+* nn.Softplus() в четным слоях
+* LeakyReLU() нечетных и на выходе
+* Регуляризация dropout(p=0.5) после каждого скрытого слоя
+* Использование He инициализации с параметрами mode='fan_in', nonlinearity='relu'
+* Использование нормальное отклонение с mean=0.5, std=1
+* 3 скрытыми слоями с количеством нейронами 12, 8, 4 соответственно
+
+* По сравнению с baseline моделью качество выросло на 39%
+
+* Считаю, что это достаточно неплохой результат относительно baseline модели.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
 # Описание проекта "Определение_температуры_на_поверхности_звезд":
 
 
