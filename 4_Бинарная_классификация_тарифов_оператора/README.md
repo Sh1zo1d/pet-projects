@@ -1,3 +1,43 @@
+
+
+# Бинарная_классификация_тарифов_оператора
+
+## Описание проекта
+Требуется построить модель для задачи классификации, которая определит подходящий тарифный план для клиентов оператора мобильной связи.
+
+## Навыки и инструменты
+* pandas
+* numpy
+* balanced_accuracy_score
+* accuracy_score
+* f1_score
+* precision_score
+* recall_score
+* fbeta_score
+* LogisticRegression
+* RandomForestClassifier
+* DecisionTreeClassifier
+* train_test_split
+* GridSearchCV
+* RandomizedSearchCV
+* cross_val_score
+* collections.Counter
+* seaborn
+* pandas_profiling
+* plot_roc_curve
+* plot_confusion_matrix
+* matplotlib.pyplot 
+
+## Общий вывод
+
+* Лучшая модель случайного леса с параметрами:
+
+  * n_estimators=3, max_depth=5
+  * Среднее значение для Fbeta на валидационной выборке 0.6162392177578815
+
+
+
+<!--
 # Описание проекта:
 
 * Цель данного проекта — построить модель для задачи классификации, которая определит подходящий тарифный план для клиентов оператора мобильной связи "Мегалайн". В распоряжении у нас имеются данные о поведении клиентов, которые уже используют тарифы "Смарт" и "Ультра".
