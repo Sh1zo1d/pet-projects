@@ -1,3 +1,50 @@
+
+
+# Определение_рыночной_стоимости_автомобиля
+
+## Описание проекта
+На основе исторических данных создать модель, определяющую стоимость автомобиля
+
+## Навыки и инструменты
+* pandas 
+* warnings 
+* sklearn.model_selection.train_test_split
+* CatBoostRegressor
+* LinearRegression
+* RandomForestRegressor
+* collections.Counter
+* sklearn.metrics.mean_absolute_error
+* sklearn.metrics.mean_squared_error
+* sklearn.metrics.r2_score
+* sklearn.model_selection.cross_val_score
+* pandas_profiling
+* LGBMRegressor
+* re
+* numpy
+* pgeocode
+* optuna
+* seaborn
+* matplotlib.pyplot
+* category_encoders
+* OneHotEncoder
+* 
+## Общий вывод
+
+* Лучшая модель Catboost: 
+
+  * RMSE = 1671.5349657268462 
+
+  * Время обучения = ~1m 
+
+  * Время предсказания = ~312 ms
+
+
+
+
+
+
+<!--
+
 # Описание проекта "Определение_рыночной_стоимости_автомобиля":
 
 * Я работаю над интересным проектом - разработкой модели для сервиса по продаже автомобилей с пробегом "Не бит, не крашен". Наша цель - создать удобное приложение, которое поможет пользователям узнать рыночную стоимость их автомобилей.
