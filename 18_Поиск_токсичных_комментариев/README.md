@@ -1,9 +1,9 @@
-# Поиск_токсичных_комментариев
+# Toxic Comment Classification
 
-## Описание проекта
-Нужно создать модель, которая будет помогать определять тональност текста, а именно правки и комментарии для товаров в интернет магазине 
+## Project Description
+The aim of this project is to create a model that helps determine the sentiment of text, specifically edits and comments for products in an online store.
 
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * warnings
 * train_test_split
@@ -48,16 +48,15 @@
 * RocCurveDisplay
 * ConfusionMatrixDisplay
 
-## Общий вывод
-
-Лучшая модель:
+## General Conclusion
+Best model:
 
 * LogisticRegression(C=4, class_weight='balanced', max_iter=12, random_state=7, solver='sag')
 
-* Классическая модель без каких-либо противодействий дизбалансу дает f1 = 0.77.
+* A classic model without any balance improvements yields an F1 score of 0.77.
 
-* Лучшая F1-мера на тестовой выборке:
+* The best F1 score on the test set:
 
-* F1-score для тестовой выборки: 0.77
+* F1-score for the test set: 0.77
 
-* Модель с statify, весами и дала максимально 0.769
+* The model with stratification and weights achieved a maximum of 0.769.
