@@ -1,55 +1,48 @@
 ![image](https://github.com/Sh1zo1d/projects/assets/102797488/707f816f-555f-4909-bfaf-4e6e58596496)
 
 
+# StackOverflow Database Analysis
 
+## Project Description
+The project involves analyzing the StackOverflow database and extracting valuable information about questions, answers, comments, and user ratings for the year 2008.
 
-# Анализ_базы_данных_StackOverflow
-
-## Описание проекта
-Нужно проанализировать базу данных StackOverflow и получить полезную информацию о вопросах, ответах, комментариях и оценках пользователя за 2008 год
-
-## Навыки и инструменты
+## Skills and Tools
 * matplotlib
 * pandas
 * sqlalchemy
-* seaborn 
+* seaborn
 
-## Общий вывод:
+## General Conclusion:
 
-С помощью библиотеки sqlalchemy были выполнены поставленные задачи. Данны соответствующие выводы.
+The tasks were accomplished using the SQLAlchemy library, and the data yielded the following conclusions.
 
-* Задние 1 Анализ общего количества публикаций по месяцам
+* Task 1: Analysis of the total number of publications per month
+  * The maximum number of publications is 452,928,568, which occurred in September 2008.
+  * The minimum is 669,895, posted in July 2008.
+  * Key findings:
+    * There was a sharp increase in publications from July to September.
+    * A decline was observed from October to December.
 
-  * Максимальное кол-во публикаций равно 452_928_568 и приходится на сентябрь 2008 года
-  * Минимальное равно 669_895, сделанные за июль 2008 года
-  * Ключевые выводы:
+* Task 2: Analysis of displaying user names
+  * There are 254 users with 19 non-unique names.
+  * 57 unique display names.
+  
+* Task 3: Number of publications in 2008 by month for users registered in September 2008.
+  * Anomalies were identified - 32 publications in August 2008.
 
-  * 3 месяца с июль по сентябрь наблюдался резкий рост публикаций.
-  * С октября по декабрь наблюдался спад.
+* Task 6: On average, how many days did users interact with the site in the first week of December 2008.
+  * On average, users were active for 2 days in the first week of December 2008.
 
+* Task 8: Cohort Analysis
+  * Anomalies: For the first cohort, values change rapidly and jump, whereas the usual retention decreases exponentially or linearly.
 
-* Задание 2 Анализ отображающихся имен пользователей
+* Task 9: The percentage change in the number of posts each month from September 1 to December 31, 2008.
+  * From September to December 2008, a stable decrease in the number of publications by month was observed:
+  * September - 70,371
+  * October - 60,102
+  * November - 46,975
+  * December - 44,592
 
-  * 254 пользователей с 19 неуникальными именами
-  * 57 уникальных отображающихся имен
-* Задание 3 Количество публикаций за 2008 год по месяцам, пользователей, зарегистрированных в сентябре 2008 года.
-
-  * Были выявлены аномалии - 32 публикаций в августе 2008 года
-
-* Задание 6 Сколько в среднем на первой недели декабря 2008 года пользователи взаимодействовали с сайтом.
-
-  * В среднем пользователи были активны 2 дня в первой недели декабря 2008 года
-
-* Задание 8 Когортный анализ
-  * Аномалии: для первой когорты значения сменяют друг друга и скачут. Тогда как обычно удержание уменьшается по экспоненте либо линейно
-
-* Задание 9 На сколько процентов менялось количество постов ежемесячно с 1 сентября по 31 декабря 2008 года
-
-  * С сентября по декабрь 2008 года наблюдался стабильный упадок кол-ва публикаций по месяцам:
-  * Сентябрь - 70_371
-  * Октябрь - 60_102
-  * Ноябрь - 46_975
-  * Декабрь - 44_592
 
 
 
