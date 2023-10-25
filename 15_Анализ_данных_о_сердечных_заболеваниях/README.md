@@ -1,15 +1,10 @@
 
+# Analysis of Heart Disease Data
 
+## Project Description
+The goal is to develop a model that predicts the probability of heart disease in a patient based on various features.
 
-
-
-# Анализ_данных_о_сердечных_заболеваниях
-
-## Описание проекта
-Нужно разработать модель, которая будет предсказывать вероятность заболевания сердца у пациента по различным признакам
-
-## Навыки и инструменты
-
+## Skills and Tools
 * SMOTE
 * SimpleImputer
 * cross_val_score
@@ -43,11 +38,12 @@
 * shuffle
 * classification_report,roc_curve
 
-## Общий вывод
+## General Conclusion
 
-Лучшая модель:
+Best model:
 
 * RandomForestClassifier - Recall - 88.2%
+
 
 
 
