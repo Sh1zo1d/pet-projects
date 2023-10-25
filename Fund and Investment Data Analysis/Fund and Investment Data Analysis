@@ -1,0 +1,314 @@
+-- 1. Count the number of closed companies.
+SELECT COUNT(status)
+FROM company
+WHERE status = 'closed';
+
+-- 2. Display the total funding amount for news companies in the USA.
+-- Use data from the company table. Sort the table in descending order by the funding_total field.
+SELECT funding_total 
+FROM company
+WHERE category_code = 'news' AND country_code = 'USA'
+ORDER BY funding_total DESC;
+
+-- 3. Find the total amount of cash deals for acquisitions from 2011 to 2013.
+-- Select deals that were made using cash only.
+SELECT SUM(price_amount)
+FROM acquisition
+WHERE EXTRACT(YEAR FROM acquired_at) BETWEEN 2011 AND 2013 AND term_code = 'cash';
+
+-- 4. Display the first name, last name, and Twitter usernames of people whose usernames start with 'Silver'.
+SELECT first_name, last_name, twitter_username
+FROM people
+WHERE twitter_username LIKE 'Silver%';
+
+-- 5. Show all information about people whose Twitter usernames contain 'money' and whose last names start with 'K'.
+SELECT *
+FROM people
+WHERE twitter_username LIKE '%money%' AND last_name LIKE 'K%';
+
+-- 6. For each country, display the total funding raised by companies registered in that country.
+-- Sort the data in descending order by the total amount.
+SELECT country_code, SUM(funding_total)
+FROM company
+GROUP BY country_code
+ORDER BY 2 DESC;
+
+-- 7. Create a table with the round date, minimum and maximum investment amounts raised on that date.
+-- Include only records where the minimum investment amount is not zero and is not equal to the maximum.
+SELECT funded_at, MIN(raised_amount), MAX(raised_amount)
+FROM funding_round
+GROUP BY funded_at
+HAVING MIN(raised_amount) != MAX(raised_amount) AND MIN(raised_amount) != 0;
+
+-- 8. Create a field with categories:
+-- For funds that invest in 100 or more companies, assign the 'high_activity' category.
+-- For funds that invest in 20 or more companies but less than 100, assign the 'middle_activity' category.
+-- If the number of invested companies is less than 20, assign the 'low_activity' category.
+-- Display all fields from the fund table along with the new category field.
+SELECT *,
+    CASE
+        WHEN invested_companies >= 100 THEN 'high_activity'
+        WHEN invested_companies >= 20 AND invested_companies < 100 THEN 'middle_activity'
+        WHEN invested_companies < 20 THEN 'low_activity'
+    END AS category
+FROM fund;
+
+-- 9. For each of the categories assigned in the previous task, calculate the rounded average number of investment rounds the fund participated in.
+-- Display the categories and the average number of investment rounds. Sort the table in ascending order by the average.
+SELECT
+    CASE
+        WHEN invested_companies >= 100 THEN 'high_activity'
+        WHEN invested_companies >= 20 THEN 'middle_activity'
+        ELSE 'low_activity'
+    END AS activity,
+    ROUND(AVG(investment_rounds))
+FROM fund
+GROUP BY activity
+ORDER BY 2;
+
+-- 10. Analyze the countries where funds that invest in startups are most active.
+-- For each country, calculate the minimum, maximum, and average number of companies invested in by funds founded from 2010 to 2012 (inclusive).
+-- Exclude countries with funds where the minimum number of invested companies is zero.
+-- Retrieve the top 10 most active investing countries, sorted by average number of companies, and then by country code in lexicographical order.
+SELECT country_code AS country,
+    MIN(invested_companies) AS min_comp,
+    MAX(invested_companies) AS max_comp,
+    AVG(invested_companies) AS avg_comp
+FROM fund
+WHERE EXTRACT(YEAR FROM founded_at) BETWEEN 2010 AND 2012
+GROUP BY country_code
+HAVING MIN(invested_companies) > 0
+ORDER BY avg_comp DESC, country ASC
+LIMIT 10;
+
+-- 11. Display the first name and last name of all startup employees.
+-- Add a field with the name of the educational institution the employee attended, if available.
+SELECT p.first_name,
+    p.last_name, 
+    e.institution
+FROM people AS p
+LEFT JOIN education AS e ON p.id = e.person_id;
+
+    
+-- 12. For each company, find the number of educational institutions attended by its employees.
+-- Display the company name and the count of unique institution names.
+-- Create a top-5 list of companies with the most universities.
+SELECT company.name,
+    COUNT(DISTINCT institution) AS unique_institutions_count
+FROM company
+INNER JOIN people ON company.id = people.company_id
+INNER JOIN education ON people.id = education.person_id
+GROUP BY company.name
+ORDER BY unique_institutions_count DESC
+LIMIT 5;
+
+-- 13. Create a list of unique names of closed companies where the first funding round was also the last.
+SELECT DISTINCT company.name
+FROM company
+INNER JOIN funding_round AS fr ON company.id = fr.company_id
+WHERE company.status = 'closed' AND fr.is_first_round = 1 AND fr.is_last_round = 1;
+
+-- 14. Create a list of unique employee IDs working at companies selected in the previous task.
+WITH closed_first_last_round_companies AS (
+    SELECT DISTINCT company.id AS comp
+    FROM company
+    INNER JOIN funding_round AS fr ON company.id = fr.company_id
+    WHERE company.status = 'closed' AND fr.is_first_round = 1 AND fr.is_last_round = 1
+)
+SELECT DISTINCT people.id
+FROM people
+WHERE people.company_id IN (SELECT comp FROM closed_first_last_round_companies);
+
+-- 15. Create a table that includes unique pairs of employee IDs from the previous task and the educational institution they graduated from.
+WITH closed_first_last_round_companies AS (
+    SELECT DISTINCT company.id AS comp
+    FROM company
+    INNER JOIN funding_round AS fr ON company.id = fr.company_id
+    WHERE company.status = 'closed' AND fr.is_first_round = 1 AND fr.is_last_round = 1
+)
+SELECT DISTINCT people.id, education.institution
+FROM people
+INNER JOIN education ON people.id = education.person_id
+WHERE people.company_id IN (SELECT comp FROM closed_first_last_round_companies);
+
+-- 16. Calculate the number of educational institutions for each employee from the previous task.
+-- Consider that some employees may have graduated from the same institution multiple times.
+WITH closed_first_last_round_companies AS (
+    SELECT DISTINCT company.id AS comp
+    FROM company
+    INNER JOIN funding_round AS fr ON company.id = fr.company_id
+    WHERE company.status = 'closed' AND fr.is_first_round = 1 AND fr.is_last_round = 1
+)
+SELECT DISTINCT people.id, COUNT(education.institution) AS institution_count
+FROM people
+INNER JOIN education ON people.id = education.person_id
+WHERE people.company_id IN (SELECT comp FROM closed_first_last_round_companies)
+GROUP BY people.id;
+
+-- 17. Enhance the previous query and display the average number of educational institutions (all, not just unique) that employees from different companies graduated from.
+-- Display only one record; no grouping is needed here.
+WITH closed_first_last_round_companies AS (
+    SELECT DISTINCT company.id AS comp
+    FROM company
+    INNER JOIN funding_round AS fr ON company.id = fr.company_id
+    WHERE company.status = 'closed' AND fr.is_first_round = 1 AND fr.is_last_round = 1
+)
+SELECT AVG(inst)
+FROM (
+    SELECT DISTINCT people.id, COUNT(institution) AS inst
+    FROM people
+    INNER JOIN education ON people.id = education.person_id
+    WHERE people.company_id IN (SELECT comp FROM closed_first_last_round_companies)
+    GROUP BY people.id
+) AS t;
+
+-- 18. Write a similar query: calculate the average number of educational institutions (all, not just unique) that employees of Facebook have graduated from.
+-- *(Facebook is a service banned in the Russian Federation)
+WITH t1 AS (
+    SELECT DISTINCT company.id AS comp
+    FROM company
+    INNER JOIN funding_round AS fr ON company.id = fr.company_id
+    WHERE company.status = 'closed' AND fr.is_first_round = 1 AND fr.is_last_round = 1
+)
+SELECT AVG(inst)
+FROM (
+    SELECT DISTINCT people.id, COUNT(institution) AS inst
+    FROM people
+    INNER JOIN education ON people.id = education.person_id
+    WHERE people.company_id IN (SELECT id
+    FROM company
+    WHERE name = 'Facebook')
+    GROUP BY people.id
+) AS t;
+
+-- 19. Create a table with the following fields:
+-- * name_of_fund — the fund's name;
+-- * name_of_company — the company's name;
+-- * amount — the amount of investments the company raised in a funding round.
+-- Include data from companies that had more than six significant milestones in their history and had funding rounds between 2012 and 2013 (inclusive).
+SELECT fund.name AS name_of_fund,
+    company.name AS name_of_company,
+    raised_amount AS amount
+FROM investment
+INNER JOIN company ON investment.company_id = company.id
+INNER JOIN fund ON fund.id = investment.fund_id
+INNER JOIN funding_round ON funding_round.company_id = company.id AND investment.funding_round_id = funding_round.id
+WHERE EXTRACT(YEAR FROM investment.created_at) BETWEEN 2012 AND 2013 
+AND company.milestones > 6;
+
+-- 20. Extract a table that includes the following fields:
+-- * buying_company_name;
+-- * deal_amount;
+-- * acquired_company_name;
+-- * total_investments_in_acquired_company;
+-- * ratio, which shows how many times the purchase amount exceeded the total investments in the acquired company, rounded to the nearest integer.
+-- Exclude deals where the purchase amount is zero. If the total investments in a company are zero, exclude it from the table.
+-- Sort the table by deal amount from highest to lowest, and then by the acquired company name in lexicographical order.
+-- Limit the table to the first ten entries.
+WITH comp_name_invest_bought AS (
+    SELECT company.id AS bought_company_id, company.name AS bought_company_name,
+    SUM(company.funding_total) AS sum_total_invest_in_bought,
+    acquisition.id AS acq_id_1 
+    FROM company
+    INNER JOIN acquisition ON acquisition.acquired_company_id = company.id
+    GROUP BY company.id, acq_id_1
+    HAVING SUM(company.funding_total) > 0
+),
+comp_buyer AS (
+    SELECT company.name AS company_buyer,
+    price_amount AS sum_of_acquisition,
+    acquisition.id AS acq_id_2 
+    FROM company
+    INNER JOIN acquisition ON acquisition.acquiring_company_id = company.id
+    WHERE price_amount > 0
+)
+SELECT comp_buyer.company_buyer,
+    comp_buyer.sum_of_acquisition,
+    bought_company_name,
+    sum_total_invest_in_bought,
+    ROUND(comp_buyer.sum_of_acquisition / sum_total_invest_in_bought) AS ratio
+FROM comp_name_invest_bought
+INNER JOIN comp_buyer ON comp_name_invest_bought.acq_id_1 = comp_buyer.acq_id_2 
+ORDER BY comp_buyer.sum_of_acquisition DESC, bought_company_name
+LIMIT 10;
+   
+
+
+-- 21. Extract a table with company names from the 'social' category that received funding between 2010 and 2013 (inclusive).
+-- Ensure that the raised amount is not zero. Also, display the month of the funding round.
+SELECT com.name AS com_name,
+       EXTRACT(MONTH FROM fr.funded_at) AS month
+FROM company AS com
+LEFT JOIN funding_round AS fr ON com.id = fr.company_id
+WHERE com.category_code = 'social'
+      AND fr.raised_amount != 0
+      AND EXTRACT(YEAR FROM fr.funded_at) BETWEEN 2010 AND 2013;
+
+-- 22. Retrieve data for months from 2010 to 2013 when investment rounds took place. Group the data by the month number and create a table with the following fields:
+-- * month number when the rounds occurred;
+-- * the count of unique fund names from the USA that invested in that month;
+-- * the count of companies acquired in that month;
+-- * the total amount of deals for acquisitions in that month.
+WITH fr AS (SELECT id,
+           company_id,
+           EXTRACT(MONTH FROM funded_at) AS month,
+           raised_amount
+       FROM funding_round
+       WHERE EXTRACT(YEAR FROM funded_at) BETWEEN 2010 AND 2013)
+SELECT t1.month,
+    t1.unique_count_usa,
+    t2.count AS acquisition_count,
+    t2.sum AS total_acquisition_amount
+FROM (SELECT fr.month,
+               COUNT(DISTINCT t1.name) AS unique_count_usa
+               FROM fr
+               LEFT JOIN (SELECT *
+                          FROM investment AS i
+                          LEFT JOIN fund AS f ON f.id = i.fund_id
+                          WHERE country_code = 'USA') AS t1 ON t1.funding_round_id = fr.id
+               WHERE NOT t1.fund_id IS NULL
+               GROUP BY fr.month) AS t1
+LEFT JOIN (SELECT EXTRACT(MONTH FROM acquired_at) AS month,
+           COUNT(id) AS count,
+           SUM(price_amount) AS sum
+           FROM acquisition AS a
+           WHERE EXTRACT(YEAR FROM acquired_at) BETWEEN 2010 AND 2013
+           GROUP BY month) AS t2 ON t2.month = t1.month;
+
+-- 23. Create a pivot table and display the average investment amount for countries with startups registered in 2011, 2012, and 2013.
+-- Data for each year should be in separate columns. Sort the table by the average investment for the year 2011 in descending order.
+WITH 
+T1 AS (SELECT country_code,
+       AVG(funding_total) AS avg_2011
+       FROM company
+       WHERE EXTRACT(YEAR FROM founded_at) = 2011
+       GROUP BY country_code
+),
+T2 AS (SELECT country_code,
+       AVG(funding_total) AS avg_2012
+       FROM company
+       WHERE EXTRACT(YEAR FROM founded_at) = 2012
+       GROUP BY country_code
+),
+T3 AS (SELECT country_code,
+       AVG(funding_total) AS avg_2013
+       FROM company
+       WHERE EXTRACT(YEAR FROM founded_at) = 2013
+       GROUP BY country_code
+)
+SELECT T1.country_code, avg_2011, avg_2012, avg_2013
+FROM T1
+INNER JOIN T2 ON T1.country_code = T2.country_code
+INNER JOIN T3 ON T3.country_code = T1.country_code
+ORDER BY avg_2011 DESC;
+
+
+
+
+
+
+
+
+
+
+
