@@ -1,4 +1,4 @@
-# PySpark_Big_Data_Processing_System
+# PySpark Big Data Processing System
 
 ## Project Description
 The task is to train a linear regression model on housing data in California in 1990 and predict the median housing cost.
