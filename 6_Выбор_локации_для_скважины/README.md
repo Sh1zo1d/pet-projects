@@ -1,14 +1,9 @@
+# Choosing a Drilling Location for an Oil Well
 
+## Project Description
+The goal of this project is to determine the best location for drilling an oil well.
 
-
-
-# Выбор_локации_для_скважины
-
-## Описание проекта
-
-Определить наилучшее место для бурения скважины.
-
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * numpy 
 * train_test_split
@@ -22,10 +17,10 @@
 * ProfileReport
 * LinearRegression
 
-## Общий вывод
+## Key Findings
 
+* The best region for exploration is the second one with an average profit of 497 million rubles.
 
-* Лучший регион для разведки является второй со средней прибылью в 497 млн рублей.
 <!--
 
 # Описание проекта "Выбор_локации_для_скважины":
