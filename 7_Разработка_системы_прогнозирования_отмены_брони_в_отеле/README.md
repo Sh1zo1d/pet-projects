@@ -1,12 +1,9 @@
+# Hotel Booking Cancellation Prediction System Development
 
+## Project Description
+The task is to develop a system for predicting hotel booking cancellations.
 
-
-
-# Разработка_системы_прогнозирования_отмены_брони_в_отеле
-
-## Описание проекта
-Требуется разработать систему по прогназированию отмены бронирования в отеле
-
+## Skills and Tools
 * pandas 
 * ProfileReport
 * numpy 
@@ -33,10 +30,11 @@
 * DecisionTreeClassifier
 * shuffle
 
-## Общий вывод
- 
-* Лучшая модель - это случайный лес с upsampling, показывает на кросс-валидации средний результат равный 0.844096226111763.
-* F1-score для тестовой выборки: 0.6513261900579659 достаточно хороший показатель
+## Key Findings
+
+* The best model is the random forest with upsampling, showing a cross-validation average score of 0.844096226111763.
+* The F1-score for the test set is 0.6513261900579659, which is a reasonably good result.
+
 
 <!--
 
