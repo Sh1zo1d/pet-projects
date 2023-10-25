@@ -1,10 +1,9 @@
+# Statistical Analysis with Hypothesis Testing on Tariffs
 
-# Статистический_анализ_с_гипотезой_о_тарифах
+## Project Description
+The goal of this project is to determine which of the tariffs generates more revenue. By analyzing customer behavior, we aim to draw conclusions about which tariff is more profitable. This will enable adjustments to the advertising budget and informed decision-making.
 
-## Описание проекта
-Определить, какой из тарифов приносит больше денег. В результате исследования необходимо проанализировать поведение клиентов и сделать вывод о том, какой тариф является более выгодным. Это позволит скорректировать рекламный бюджет и принять соответствующие решения.
-
-## Навыки и инструменты
+## Skills and Tools
 
 * pandas 
 * scipy.stats 
@@ -16,20 +15,18 @@
 * math 
 * random
 
-## Общий вывод
+## Key Findings
 
-
-
-* Клиенты тарифа "ultra" используют интернет на 3399.5 Гб больше в среднем
-* Клиенты тарифа ultra используют звонки на 110.3 минут больше в среднем
-* Клиенты тарифа ultra используют сообщения на 16.0 штук больше в среднем
-* Отток клиентов чаще происходит у smart
-* Выручка на одного клиента выше на почти 6_000 рублей.
-* С тарифа smart процент оттока равен ~0.20%
-* С тарифа ultra процент оттока равен ~0.13%
-* Процент ушедших клиентов клиентов по тарифу от общего числа клиентов:
-	* smart = 0.05%
-	* ultra = 0.08%
+* Customers on the "ultra" tariff use an average of 3399.5 GB more internet.
+* Customers on the "ultra" tariff use an average of 110.3 more minutes for calls.
+* Customers on the "ultra" tariff send an average of 16.0 more messages.
+* Churn rate is higher among "smart" tariff customers.
+* Revenue per customer is nearly 6,000 rubles higher.
+* Churn rate for "smart" tariff is approximately 0.20%.
+* Churn rate for "ultra" tariff is approximately 0.13%.
+* Percentage of churned customers by tariff as a proportion of total customers:
+  * smart = 0.05%
+  * ultra = 0.08%
 
 
 <!--
