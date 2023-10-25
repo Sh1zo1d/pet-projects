@@ -1,18 +1,19 @@
-# Система_обработки_больших_данных_PySpark
+# PySpark_Big_Data_Processing_System
 
-## Описание проекта
-Требуется обучить модель линейной регрессии на данных о жилье в Калифорнии в 1990 году и предсказать медианную стоимость оной.
+## Project Description
+The task is to train a linear regression model on housing data in California in 1990 and predict the median housing cost.
 
-## Навыки и инструменты
+## Skills and Tools
 * Pyspark
 
-## Общий вывод
- 
-Самая лучшая модель оказалось без стандартизации:
+## Overall Conclusion
 
-* Корень из среднеквадратичной ошибки (RMSE): 69780.1
-* Коэффициент детерминации (R2): 0.632608
-* Средняя абсолютная ошибка (MAE): 50100.9
+The best model turned out to be without standardization:
+
+* Root Mean Squared Error (RMSE): 69780.1
+* Coefficient of Determination (R2): 0.632608
+* Mean Absolute Error (MAE): 50100.9
+
 
 
 
