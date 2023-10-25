@@ -96,4 +96,4 @@ Welcome to the repository of projects and educational tasks related to data anal
 21. Классификация Python - Прогноз оттока клиентов оператора связи:
 Обучение модели для прогноза оттока клиентов оператора связи на основе персональных данных, тарифов и услуг. -->
 
-Каждый проект имеет свой собственный каталог с описанием задачи и файлами проекта. Для дополнительной информации, перейдите в каталог интересующего вас проекта. Приятного изучения и успешной работы с данными и моделями!
+Each project has its own directory with a description of the task and project files. For additional information, please go to the directory of the project that interests you. Enjoy studying and successful work with data and models!
