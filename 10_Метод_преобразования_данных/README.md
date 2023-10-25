@@ -1,19 +1,19 @@
+# Data Transformation Method
 
-# Метод_преобразования_данных
+## Project Description
+The goal is to protect the data in such a way that the quality of machine learning models is not compromised during the transformation.
 
-## Описание проекта
-Нужно защитить данные, чтобы при преобразовании качество моделей машинного обучения не ухудшилось.
-
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * numpy
 * sklearn.model_selection.train_test_split
 * sklearn.linear_model.LinearRegression
 
-## Общий вывод
-* Разработан алгоритм который преобразует данные, работает он с помощью умножения матрицы признаков на кодирующую матрицу
-* Протестирована метрика R2 для данных без преобразования и с ним, было замечено, что R2 не изменилось, алгоритм работает
-* Данные легко зашифровать, умножив матрицу с данными на кодирующую
+## General Conclusion
+* An algorithm has been developed that transforms data by multiplying the feature matrix by an encoding matrix.
+* The R2 metric was tested for data both without transformation and with transformation, and it was observed that R2 remained unchanged, indicating that the algorithm is effective.
+* Data can be easily encrypted by multiplying the data matrix by the encoding matrix.
+
 
 
 
