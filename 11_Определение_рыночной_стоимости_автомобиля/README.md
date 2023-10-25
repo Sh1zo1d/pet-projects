@@ -1,13 +1,11 @@
+# Car Market Value Estimation
 
+## Project Description
+Create a model based on historical data to determine the market value of a car.
 
-# Определение_рыночной_стоимости_автомобиля
-
-## Описание проекта
-На основе исторических данных создать модель, определяющую стоимость автомобиля
-
-## Навыки и инструменты
-* pandas 
-* warnings 
+## Skills and Tools
+* pandas
+* warnings
 * sklearn.model_selection.train_test_split
 * CatBoostRegressor
 * LinearRegression
@@ -27,16 +25,17 @@
 * matplotlib.pyplot
 * category_encoders
 * OneHotEncoder
-* 
-## Общий вывод
 
-* Лучшая модель Catboost: 
+## General Conclusion
 
-  * RMSE = 1671.5349657268462 
+* Best model: Catboost
 
-  * Время обучения = ~1m 
+  * RMSE = 1671.5349657268462
 
-  * Время предсказания = ~312 ms
+  * Training time = ~1 minute
+
+  * Prediction time = ~312 milliseconds
+
 
 
 
