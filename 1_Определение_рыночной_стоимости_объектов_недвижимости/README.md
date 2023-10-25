@@ -1,9 +1,9 @@
-# Определение_рыночной_стоимости_объектов_недвижимости
+# Real Estate Market Analysis
 
-## Описание проекта
-Нужно исследовать рынок недвижимости Санкт-Петербурга и соседних населенных пунктов. Ответьи на несколько вопрос и выделить центр по общим выводам.
+## Project Description
+The project involves researching the real estate market in St. Petersburg and neighboring areas. You need to answer several questions and identify the center based on the general findings.
 
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * numpy
 * statistics
@@ -12,5 +12,6 @@
 * matplotlib
 * datetime
 * random
-## Общий вывод
-На стоимость недвижимости влияет много факторов. От высоты потолков до наличия пруда или парка в районе. Проанализировав наши данные и избавившись от выбросов и пустых значений мы выделили все факторы из нашей информации, влияющие на недвижимость. Также заметили, что цены в центральной области выше, чем в общей базе - что достаточно логично и подтвежрает верность выполненной работы. В дальнейшем можем использовать эти данные для других целей.
+
+## General Conclusion
+The cost of real estate is influenced by many factors, from ceiling height to the presence of a pond or park in the area. By analyzing our data and removing outliers and missing values, we have identified all the factors from our information that affect real estate. We also noticed that prices in the central area are higher than in the general database, which is quite logical and confirms the correctness of the work done. In the future, we can use this data for other purposes.
