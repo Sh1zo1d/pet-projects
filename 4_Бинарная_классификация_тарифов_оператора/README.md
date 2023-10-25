@@ -1,11 +1,10 @@
 
+# Binary Classification of Operator Tariffs
 
-# Бинарная_классификация_тарифов_оператора
+## Project Description
+The goal of this project is to build a classification model that will determine the suitable tariff plan for mobile operator customers.
 
-## Описание проекта
-Требуется построить модель для задачи классификации, которая определит подходящий тарифный план для клиентов оператора мобильной связи.
-
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * numpy
 * balanced_accuracy_score
@@ -26,14 +25,14 @@
 * pandas_profiling
 * plot_roc_curve
 * plot_confusion_matrix
-* matplotlib.pyplot 
+* matplotlib.pyplot
 
-## Общий вывод
+## Key Findings
 
-* Лучшая модель случайного леса с параметрами:
-
+* The best random forest model with the following parameters:
   * n_estimators=3, max_depth=5
-  * Среднее значение для Fbeta на валидационной выборке 0.6162392177578815
+  * Mean Fbeta score on the validation set is 0.6162.
+
 
 
 
