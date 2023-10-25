@@ -1,9 +1,9 @@
-# Классификация_сложности_грамматики_по_субтитрам
+# Classification of Grammar Complexity from Subtitles
 
-## Описание проекта
-В этом проекте нужно построить алгоритм, который будет определять сложность материала по шкале CERF. Я использовал не только бинарную классификацию, но и регрессию. Точность на регресии показала наилучший результат 0.7 уровня ошибки в среднем.
+## Project Description
+In this project, the goal is to build an algorithm that assesses the complexity of material based on the CERF scale. I used both binary classification and regression. Regression showed the best result with an average error level of 0.7.
 
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * numpy
 * optuna
@@ -42,7 +42,8 @@
 * ngrams
 * spacy
 
-## Общий вывод
-Лучшие модели:
+## General Conclusion
+Best models:
 * RandomForestClassifier = F1- 0.6
 * LinearRegression = MAE = 0.71
+
