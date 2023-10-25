@@ -1,9 +1,10 @@
-1. Найдите количество вопросов, которые набрали больше 300 очков или как минимум 100 раз были добавлены в «Закладки».
+1. Find the number of questions that have received more than 300 points or have been bookmarked at least 100 times.
 SELECT COUNT(*) 
 FROM stackoverflow.posts
 WHERE post_type_id= 1 AND (score > 300 OR favorites_count > 99 )
 
-2. Сколько в среднем в день задавали вопросов с 1 по 18 ноября 2008 включительно? Результат округлите до целого числа.
+2. What is the average number of questions asked per day from November 1st to November 18th, 2008, inclusive? Round the result to the nearest whole number.
+
 WITH l1 AS 
 (SELECT DISTINCT creation_date::date, COUNT(DISTINCT title) AS c1
 FROM stackoverflow.posts
@@ -12,12 +13,12 @@ GROUP BY creation_date::date)
 SELECT ROUND(AVG(c1),0)
 FROM l1
 
-3. Сколько пользователей получили значки сразу в день регистрации? Выведите количество уникальных пользователей.
+3. How many users received badges on the same day they registered? Display the count of unique users.
 SELECT  COUNT(DISTINCT user_id)
 FROM stackoverflow.users 
         JOIN stackoverflow.badges ON stackoverflow.badges.user_id = stackoverflow.users.id AND stackoverflow.badges.creation_date::date = stackoverflow.users.creation_date::date
 
-4. Сколько уникальных постов пользователя с именем Joel Coehoorn получили хотя бы один голос?
+4. How many unique posts by a user with the name Joel Coehoorn received at least one vote?
 SELECT COUNT(DISTINCT p.id)
 
 FROM stackoverflow.posts AS p 
@@ -26,13 +27,13 @@ FROM stackoverflow.posts AS p
 WHERE u.display_name = 'Joel Coehoorn' AND v.vote_type_id IS NOT NULL
 
 
-5. Выгрузите все поля таблицы vote_types. Добавьте к таблице поле rank, в которое войдут номера записей в обратном порядке. Таблица должна быть отсортирована по полю id.
+5. Retrieve all fields from the vote_types table. Add a 'rank' field to the table containing the reverse order of record numbers. Sort the table by the 'id' field.
 
 SELECT *, RANK() OVER (ORDER BY id DESC)
 FROM stackoverflow.vote_types
 ORDER BY id
 
-6. Отберите 10 пользователей, которые поставили больше всего голосов типа Close. Отобразите таблицу из двух полей: идентификатором пользователя и количеством голосов. Отсортируйте данные сначала по убыванию количества голосов, потом по убыванию значения идентификатора пользователя.
+6. Select the top 10 users who have cast the most 'Close' votes. Display a table with two fields: user ID and the number of votes. Sort the data first by the number of votes in descending order, and then by the user ID in descending order.
 
 SELECT DISTINCT v.user_id , COUNT(v.vote_type_id) OVER (PARTITION BY v.user_id)
 FROM stackoverflow.votes AS v   JOIN
@@ -41,25 +42,33 @@ WHERE vt.name = 'Close'
 ORDER BY 2 DESC,1 DESC
 LIMIT 10
 
-7. Отберите 10 пользователей по количеству значков, полученных в период с 15 ноября по 15 декабря 2008 года включительно.
-Отобразите несколько полей:
-* идентификатор пользователя;
-* число значков;
-* место в рейтинге — чем больше значков, тем выше рейтинг.
-Пользователям, которые набрали одинаковое количество значков, присвойте одно и то же место в рейтинге.
-Отсортируйте записи по количеству значков по убыванию, а затем по возрастанию значения идентификатора пользователя.
+7. Select the top 10 users based on the number of badges received between November 15 and December 15, 2008, inclusive. Display several fields:
+* User ID
+* Number of badges
+* Ranking - Users with the same number of badges should have the same ranking.
+Sort the records by the number of badges in descending order and then by the user ID in ascending order.
 
-8. Сколько в среднем очков получает пост каждого пользователя?
-Сформируйте таблицу из следующих полей:
-* заголовок поста;
-* идентификатор пользователя;
-* число очков поста;
-* среднее число очков пользователя за пост, округлённое до целого числа.
-Не учитывайте посты без заголовка, а также те, что набрали ноль очков.
+SELECT *, DENSE_RANK() OVER (ORDER BY c1 DESC)
+FROM 
+(SELECT DISTINCT user_id, COUNT(id) OVER (PARTITION BY user_id) AS c1
+FROM stackoverflow.badges
+WHERE creation_date::date BETWEEN '2008-11-15' AND '2008-12-15'
+) AS tmp
+ORDER BY c1 DESC, user_id ASC
+LIMIT 10
+
+8. Calculate the average score received by each user. Create a table with the following fields:
+* Post title
+* User ID
+* Post score
+* Average user score per post, rounded to the nearest whole number.
+
+Exclude posts without titles and those with a score of zero.
 
 
+9. Display the titles of posts written by users who have received more than 1000 badges. Exclude posts without titles.
 
-9. Отобразите заголовки постов, которые были написаны пользователями, получившими более 1000 значков. Посты без заголовков не должны попасть в список.
+
 SELECT DISTINCT title
 FROM stackoverflow.posts AS p JOIN
     stackoverflow.users AS u ON u.id = p.user_id JOIN
@@ -72,11 +81,13 @@ HAVING COUNT(DISTINCT id) > 1000)
 
 
 
-10. Напишите запрос, который выгрузит данные о пользователях из США (англ. United States). Разделите пользователей на три группы в зависимости от количества просмотров их профилей:
-* пользователям с числом просмотров больше либо равным 350 присвойте группу 1;
-* пользователям с числом просмотров меньше 350, но больше либо равно 100 — группу 2;
-* пользователям с числом просмотров меньше 100 — группу 3.
-Отобразите в итоговой таблице идентификатор пользователя, количество просмотров профиля и группу. Пользователи с нулевым количеством постов не должны войти в итоговую таблицу.
+10. Write a query to retrieve user data from the United States. Divide users into three groups based on the number of profile views:
+* Users with profile views greater than or equal to 350 are assigned to Group 1.
+* Users with profile views less than 350 but greater than or equal to 100 are assigned to Group 2.
+* Users with profile views less than 100 are assigned to Group 3.
+ 
+Display the user ID, the number of profile views, and the group in the final table. Users with zero post count should not be included in the final table.
+
 
 SELECT DISTINCT id,
 views,
@@ -90,7 +101,7 @@ WHERE location LIKE '%United States%' AND views > 0
 
 
 
-11. Дополните предыдущий запрос. Отобразите лидеров каждой группы — пользователей, которые набрали максимальное число просмотров в своей группе. Выведите поля с идентификатором пользователя, группой и количеством просмотров. Отсортируйте таблицу по убыванию просмотров, а затем по возрастанию значения идентификатора.
+11. Enhance the previous query. Display the leaders of each group - users who have the maximum number of views in their respective group. Display fields with user ID, group, and the number of views. Sort the table by the number of views in descending order and then by the user ID in ascending order.
 
 SELECT id,group_3,views
 FROM 
@@ -108,14 +119,31 @@ WHERE location LIKE '%United States%' AND views > 0
 WHERE views = maximum
 ORDER BY 3 DESC, 1
 
-12. Посчитайте ежедневный прирост новых пользователей в ноябре 2008 года. Сформируйте таблицу с полями:
-* номер дня;
-* число пользователей, зарегистрированных в этот день;
-* сумму пользователей с накоплением.
+12. Calculate the daily growth of new users in November 2008. Create a table with the following fields:
+* Day number
+* Number of users registered on that day
+* Cumulative total users.
 
-13. Для каждого пользователя, который написал хотя бы один пост, найдите интервал между регистрацией и временем создания первого поста. Отобразите:
-* идентификатор пользователя;
-* разницу во времени между регистрацией и первым постом.
+SELECT *, DENSE_RANK() OVER (ORDER BY c1 DESC)
+FROM 
+(SELECT DISTINCT user_id, COUNT(id) OVER (PARTITION BY user_id) AS c1
+FROM stackoverflow.badges
+WHERE creation_date::date BETWEEN '2008-11-15' AND '2008-12-15'
+) AS tmp
+ORDER BY c1 DESC, user_id ASC
+LIMIT 10
+
+
+
+
+
+13. For each user who has written at least one post, find the interval between registration and the time of creating their first post. Display:
+* User ID
+* Time difference between registration and the first post.
+
+SELECT DISTINCT u.id,FIRST_VALUE(p.creation_date) OVER (PARTITION BY user_id ORDER BY p.creation_date) - u.creation_date
+FROM stackoverflow.users AS u JOIN
+    stackoverflow.posts AS p ON p.user_id = u.id
 
 
 
