@@ -1,57 +1,59 @@
-# Описание проекта:
+# Project Description:
 
-Необходимо разработать модель для прогнозирования оттока клиентов в операторе связи. Для этого используются персональные данные клиентов, информация о выбранных ими тарифах и услугах. Главная цель проекта - создать модель, способную предсказать, собирается ли абонент разорвать договор с оператором. Это позволит оператору заранее предостеречь таких пользователей и предложить им промокоды и специальные условия для удержания.
+The goal of this project is to develop a model for predicting customer churn in a telecommunications operator. To achieve this, we will use customer's personal data, information about the selected tariffs, and services. The main objective of the project is to create a model capable of predicting whether a subscriber is going to terminate the contract with the operator. This will enable the operator to proactively retain such users by offering them promo codes and special retention offers.
 
-# Описание услуг:
+# Description of Services:
 
-## Оператор предоставляет два основных типа услуг:
+## The operator provides two main types of services:
 
-Стационарную телефонную связь. Телефон можно подключить к нескольким линиям одновременно.
+1. Fixed-line telephone services, allowing customers to connect multiple lines simultaneously.
+2. Internet services, available in two types: Digital Subscriber Line (DSL) and Fiber Optic.
 
-* Интернет. Подключение бывает двух типов: через телефонную линию DSL (англ. digital subscriber line — «цифровая абонентская линия») или оптоволоконный кабель (англ. fiber optic).
+In addition, customers have access to a range of services, including:
+- Internet security (Device Protection) with antivirus and blocking of dangerous websites (Online Security).
+- Dedicated technical support line (Tech Support).
+- Cloud file storage for data backup (Online Backup).
+- Streaming TV services (Streaming TV) and a catalog of movies (Streaming Movies).
 
-Также абонентам доступен ряд услуг:
-* Интернет-безопасность: антивирус (Device Protection) и блокировка опасных сайтов (Online Security);
-* Выделенная линия технической поддержки (Tech Support);
-* Облачное хранилище файлов для резервного копирования данных (Online Backup);
-* Стриминговое телевидение (Streaming TV) и каталог фильмов (Streaming Movies).
+Customers have the option to pay for services on a monthly basis or every 1-2 years. Various payment methods are available, and customers can receive electronic invoices.
 
-За услуги клиенты могут платить ежемесячно или раз в 1–2 года. Доступны различные способы расчёта и возможность получить электронный чек.
+### Data Description:
 
-### Описание данных:
+The data is stored in a PostgreSQL database, which consists of several tables:
+- contract: Information about customer contracts.
+- personal: Personal customer data.
+- internet: Information about internet services.
+- phone: Information about phone services.
 
-### Данные хранятся в базе данных PostgreSQL. Она состоит из нескольких таблиц:
-* contract — информация о договорах;
-* personal — персональные данные клиентов;
-* internet — информация об интернет-услугах;
-* phone — информация об услугах телефонии.
-### Таблица telecom.contract
-* customerID — ID абонента;
-* BeginDate — дата начала действия договора;
-* EndDate — дата окончания действия договора;
-* Type — тип оплаты: раз в год-два или ежемесячно;
-* PaperlessBilling — электронный расчётный лист;
-* PaymentMethod — тип платежа;
-* MonthlyCharges — расходы за месяц;
-* TotalCharges — общие расходы абонента.
-### Таблица personal
-* customerID — ID пользователя;
-* gender — пол;
-* SeniorCitizen — является ли абонент пенсионером;
-* Partner — есть ли у абонента супруг или супруга;
-* Dependents — есть ли у абонента дети.
-### Таблица telecom.internet
-* customerID — ID пользователя;
-* InternetService — тип подключения;
-* OnlineSecurity — блокировка опасных сайтов;
-* OnlineBackup — облачное хранилище файлов для резервного копирования данных;
-* DeviceProtection — антивирус;
-* TechSupport — выделенная линия технической поддержки;
-* StreamingTV — стриминговое телевидение;
-* StreamingMovies — каталог фильмов.
-### Таблица telecom.phone
-* customerID — ID пользователя;
-* MultipleLines — подключение телефона к нескольким линиям одновременно.
+Here are some key columns in these tables:
 
+### Table: telecom.contract
+- customerID: Customer ID.
+- BeginDate: Contract start date.
+- EndDate: Contract end date.
+- Type: Payment type (e.g., yearly or monthly).
+- PaperlessBilling: Electronic billing option.
+- PaymentMethod: Payment method.
+- MonthlyCharges: Monthly expenses.
+- TotalCharges: Total customer expenses.
 
+### Table: personal
+- customerID: Customer ID.
+- gender: Gender.
+- SeniorCitizen: Whether the customer is a senior citizen.
+- Partner: Whether the customer has a spouse or partner.
+- Dependents: Whether the customer has dependents (children).
 
+### Table: telecom.internet
+- customerID: Customer ID.
+- InternetService: Type of internet connection.
+- OnlineSecurity: Security features like blocking dangerous sites.
+- OnlineBackup: Cloud file storage for data backup.
+- DeviceProtection: Antivirus service.
+- TechSupport: Dedicated technical support.
+- StreamingTV: Streaming TV services.
+- StreamingMovies: Catalog of movies.
+
+### Table: telecom.phone
+- customerID: Customer ID.
+- MultipleLines: Option to connect the phone to multiple lines simultaneously.
