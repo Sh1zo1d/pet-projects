@@ -1,9 +1,9 @@
-# Прогнозирование_аварий_водителей_арендованных_транспортных_средств
+# Accident Prediction for Rental Vehicle Drivers
 
-## Описание проекта
-Нужно создать систему, которая могла бы оценить риск ДТП по выбранному маршруту движения. Под риском понимается вероятность ДТП с любым повреждением транспортного средства.
+## Project Description
+The goal is to create a system capable of assessing the risk of accidents along a selected route. Risk is defined as the probability of an accident resulting in any vehicle damage.
 
-## Навыки и инструменты
+## Skills and Tools
 * pandas 
 * matplotlib.pyplot
 * sqlalchemy
@@ -40,20 +40,20 @@
 * math
 * numpy
 
+## General Conclusion
 
-## Общий вывод
+To improve the model's quality, it is essential to equip vehicles with sensors and cameras that collect data on weather conditions, the vehicle's status, and assess the driver's mood based on facial expressions.
 
-Для увеличения качества модели обязательно нужно оборудовать а/м датчиками и камерами, которые буду собирать данные о погоде и состоянии машины, а также будет оценивать настроение водителя по мимики лица
+Key metrics for the best model:
 
-Показатели лучшей модели:
-
-* Логистическая регрессия:
+* Logistic Regression:
   * f1-0 - 0.61
   * f1-1 - 46
 
-где f1-0 - предсказания невиновных, а f1-1 наоборот
+Where f1-0 represents predictions for non-offending accidents, and f1-1 represents the opposite.
 
-Если иметь доступ к данных состояние человека перед арендой автомобиля, то можно увеличить в принципе до 60-70% успешных предсказаний.
+If you have access to data on a person's condition before renting a car, you could potentially increase successful predictions to 60-70%.
+
 
 <!--
 # Описание проекта:
