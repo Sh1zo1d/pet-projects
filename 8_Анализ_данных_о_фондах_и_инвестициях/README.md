@@ -1,16 +1,17 @@
 ![image](https://github.com/Sh1zo1d/projects/assets/102797488/5ef884c5-976a-4993-87df-e5ba989bdabe)
 
 
-# Анализ_данных_о_фондах_и_инвестициях
+# Data Analysis of Funds and Investments
 
-## Описание проекта
-В этом проекте я решил провести анализ данных о фондах и инвестициях, а также написать запросы к базе данных. Это мой самостоятельный проект, в котором я буду выполнять различные задания постепенно усложняющейся сложности. Я уже изучил все необходимые операторы, функции и методы работы с базой данных на курсе, и теперь мне предстоит применить полученные знания на практике.
+## Project Description
+In this project, I decided to analyze data about funds and investments and write queries to the database. This is my independent project where I will perform various tasks of increasing complexity. I have already studied all the necessary operators, functions, and methods for working with a database in the course, and now I need to apply the knowledge I have gained in practice.
 
-## Навыки и инструменты
+## Skills and Tools
 * SQL
 
-## Общий вывод
-* Все поставленные передо мной задачи были успешно выволнены
+## Overall Conclusion
+* All the tasks set before me have been successfully completed.
+
 
 
 <!--
