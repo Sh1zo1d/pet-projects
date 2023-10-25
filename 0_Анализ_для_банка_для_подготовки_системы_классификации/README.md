@@ -1,19 +1,20 @@
-# Анализ для банка для подготовки системы классификации
+# Bank analysis for preparing a classification system
 
-## Описание проекта
-Требуется провести анализ реальных данных Яндекс.Музыки с применением библиотеки Pandas, чтобы сравнить поведение и предпочтения пользователей из двух столиц - Москвы и Санкт-Петербурга.
+## Project Description
+It is necessary to conduct an analysis of real Yandex.Music data using the Pandas library to compare the behavior and preferences of users from two capitals - Moscow and St. Petersburg.
 
-## Навыки и инструменты
+## Skills and Tools
 
 * Python
 * Numpy
 
-## Общий вывод
-* В результате анализа были выявлены основные факторы, влияющие на возврат кредита в срок. Клиенты, находящиеся в несостоятельных отношениях (не женат / не замужем, гражданский брак) и имеющие определенное количество детей (1, 2, 4), а также с доходом менее 30 000 или в диапазоне 50 001 - 200 000 и целью кредита на операции с автомобилем или получение образования, имеют более высокую вероятность задержки платежей по кредиту.
+## General Conclusion
+* As a result of the analysis, the main factors influencing the timely repayment of the loan were identified. Clients who are in unstable relationships (unmarried / in a civil marriage) and have a certain number of children (1, 2, 4), as well as those with income less than 30,000 or in the range of 50,001 - 200,000, and a loan purpose for car operations or education, have a higher probability of loan payment delays.
 
-* С другой стороны, клиенты вдовцы / вдовы, не имеющие детей, с доходом в диапазоне 30 001 - 50 000 и с целью кредита на операции с недвижимостью обладают наименьшей вероятностью просрочки кредита.
+* On the other hand, widows/widowers without children, with income in the range of 30,001 - 50,000, and a loan purpose for real estate operations, have the lowest probability of loan default.
 
-* Эти результаты могут помочь банку оптимизировать процессы выдачи кредитов, учитывая указанные факторы и принимая более обоснованные решения
+* These results can help the bank optimize its loan approval processes, taking into account the factors mentioned and making more informed decisions.
+
 
 
 
