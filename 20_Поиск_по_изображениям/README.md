@@ -1,9 +1,9 @@
-# Поиск_по_изображениям
+# Image Search
 
-## Описание проекта
-Пользователи размещают свои фотографии на хостинге и сопровождают их полным описанием: указывают место съёмок, модель камеры и т. д. Отличительная особенность сервиса — описание: его может предоставить не только тот, кто размещает фотографию, но и другие пользователи портала. Суть поиска заключается в следующем: пользователь сервиса вводит описание нужной сцены. Сервис выводит несколько фотографий с такой же или похожей сценой.
+## Project Description
+Users upload their photos to the hosting service and accompany them with detailed descriptions: they specify the shooting location, camera model, and so on. The distinctive feature of the service is the description: it can be provided not only by the person who uploads the photo but also by other users of the portal. The essence of the search is as follows: a user of the service enters a description of the desired scene. The service displays several photos with the same or similar scene.
 
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * numpy
 * os
@@ -33,13 +33,11 @@
 * re
 * seaborn as sns
 
-## Общий вывод
+## General Conclusion
 
-
-
-* Бустинг (CatBoostRegressor): RMSE: 0.11422264868523815, Время выполнения: 412.53947710990906 сек
-* Random Forest регрессор: RMSE: 0.12220017624756276, Время выполнения: 154.18005514144897 сек
-* Бустинг (CatBoostRegressor) показал лучший результат с наименьшим значением RMSE
-* Random Forest регрессор также показал хороший результат, близкий к бустингу.
-* Линейная регрессия и Ridge регрессия демонстрируют более высокие значения RMSE
-* Нейронная сеть показывает перспективные результаты
+* Boosting (CatBoostRegressor): RMSE: 0.11422264868523815, Execution Time: 412.53947710990906 sec
+* Random Forest Regressor: RMSE: 0.12220017624756276, Execution Time: 154.18005514144897 sec
+* Boosting (CatBoostRegressor) showed the best result with the lowest RMSE value
+* Random Forest Regressor also demonstrated a good result, close to boosting.
+* Linear regression and Ridge regression show higher RMSE values
+* The neural network shows promising results
