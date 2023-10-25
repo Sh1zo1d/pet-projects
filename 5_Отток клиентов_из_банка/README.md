@@ -1,16 +1,12 @@
+# Customer Churn Prediction for a Bank
 
+## Project Description
+The goal of this project is to build a model that predicts whether a customer will leave the bank in the near future or not.
 
-
-
-# Отток клиентов_из_банка
-
-## Описание проекта
-Требуется построить модель, которая позволит спрогнозировать, уйдет ли клиент из банка в ближайшее время или нет.
-
-## Навыки и инструменты
+## Skills and Tools
 * SMOTE
 * pandas 
-* import numpy 
+* numpy 
 * RandomForestClassifier
 * DecisionTreeClassifier
 * GridSearchCV 
@@ -36,21 +32,21 @@
 * KNeighborsClassifier
 * shuffle
 
-## Общий вывод
+## Key Findings
 
-Лучший вариант препроцессинга: UpSampling
+The best preprocessing option: UpSampling
 
-Для алгоритма RandomForestClassifier были подобраны оптимальные параметры:
+Optimal parameters were selected for the RandomForestClassifier algorithm:
 
-* Количество деревьев (n_estimators): 116
-* Максимальная глубина деревьев (max_depth): 9
-* Критерий разделения деревьев (criterion): gini
-* Веса классов (class_weight): {0: 1, 1: 1.3}
-* Модель продемонстрировала среднее качество, обеспечивая надежное предсказание класса 0 с точностью 0.91 и полнотой 0.87. Эти показатели являются весьма удовлетворительными.
+* Number of trees (n_estimators): 116
+* Maximum tree depth (max_depth): 9
+* Tree splitting criterion (criterion): gini
+* Class weights (class_weight): {0: 1, 1: 1.3}
+* The model demonstrated moderate quality, providing reliable predictions of class 0 with an accuracy of 0.91 and recall of 0.87. These metrics are quite satisfactory.
 
-* Тем не менее, следует обратить внимание на относительно низкую способность модели предсказывать второстепенный класс 1, что отразилось в значении F1-меры, равной 0.61.
+* However, it is important to note the relatively low ability of the model to predict the secondary class 1, which is reflected in the F1-score of approximately 0.61.
 
-* Окончательное значение F1 составляет примерно 0.61, подчеркивая, что модель стабильно находит баланс между точностью и полнотой при классификации данных.
+* The final F1-score is approximately 0.61, emphasizing that the model consistently strikes a balance between precision and recall in classifying the data.
 
 
 <!--
