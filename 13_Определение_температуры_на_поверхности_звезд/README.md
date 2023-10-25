@@ -1,18 +1,17 @@
-# Определение_температуры_на_поверхности_звезд
+# Star Surface Temperature Prediction
 
-## Описание проекта
-С помощью нейросети определять температуру на поверхности обнаруженных звезд
+## Project Description
+The project involves using a neural network to predict the surface temperature of detected stars.
 
-## Навыки и инструменты
-
-* pandas 
+## Skills and Tools
+* pandas
 * torch
-* numpy 
-* from sklearn.model_selection.train_test_split
+* numpy
+* sklearn.model_selection.train_test_split
 * matplotlib.pyplot
 * ProfileReport
 * warnings
-* collections import Counter
+* collections.Counter
 * re
 * scipy.stats
 * fuzzywuzzy.fuzz
@@ -23,27 +22,24 @@
 * sklearn.compose.ColumnTransformer
 * Pipeline
 * torch.nn
-* torch
 * math.ceil
 * torch.optim.Adam
 * sklearn.metrics.mean_squared_error
 * sklearn.compose.make_column_transformer
 
+## General Conclusion
 
-## Общий вывод
+The lowest RMSE is approximately 4064.127, which I achieved with the following:
+* nn.Softplus() in even layers
+* LeakyReLU() in odd layers and at the output
+* Dropout regularization (p=0.5) after each hidden layer
+* Using He initialization with parameters (mode='fan_in', nonlinearity='relu')
+* Using standard deviation with mean=0.5, std=1
+* 3 hidden layers with 12, 8, and 4 neurons, respectively.
 
-Наименьший RMSE равен около 4064.127, к которому я пришел с:
+Compared to the baseline model, the quality increased by 39%.
 
-* nn.Softplus() в четным слоях
-* LeakyReLU() нечетных и на выходе
-* Регуляризация dropout(p=0.5) после каждого скрытого слоя
-* Использование He инициализации с параметрами mode='fan_in', nonlinearity='relu'
-* Использование нормальное отклонение с mean=0.5, std=1
-* 3 скрытыми слоями с количеством нейронами 12, 8, 4 соответственно
-
-* По сравнению с baseline моделью качество выросло на 39%
-
-* Считаю, что это достаточно неплохой результат относительно baseline модели.
+I consider this to be a reasonably good result relative to the baseline model.
 
 
 
