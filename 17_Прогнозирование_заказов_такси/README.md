@@ -1,10 +1,9 @@
-# Прогнозирование_заказов_такси
+# Taxi Order Forecasting
 
-## Описание проекта
-Необходимо разработать модель для прогнозирования количества заказов такси на следующий час в аэропортах. Цель проекта - обеспечить компанию эффективными прогнозами, которые позволят привлекать больше водителей в период пиковой нагрузки.
+## Project Description
+The goal of this project is to develop a model for forecasting the number of taxi orders in airports for the next hour. The project aims to provide the company with effective forecasts that will help attract more drivers during peak hours.
 
-
-## Навыки и инструменты
+## Skills and Tools
 * pandas
 * holidays
 * typing.Union
@@ -26,8 +25,8 @@
 * CatBoostRegressor
 * optuna
 
-from itertools import product
 
-## Общий вывод
-Лучшая модель: 
+## General Conclusion
+Best model:
 * RandomForestRegressor = RMSE - 35.844583
+
