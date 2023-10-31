@@ -1,7 +1,9 @@
 # Classification of Grammar Complexity from Subtitles
 
 ## Project Description
-In this project, the goal is to build an algorithm that assesses the complexity of material based on the CERF scale. I used both binary classification and regression. Regression showed the best result with an average error level of 0.7.
+Multi-class classification
+
+In this project, the goal is to build an algorithm that assesses the complexity of material based on the CERF scale. I used both binary classification and regression. Regression showed the best result with an average error level of 0.7. And Classification F1-score = 0.75
 
 ## Skills and Tools
 * pandas
