@@ -1,7 +1,8 @@
 # Bank analysis for preparing a classification system
 
 ## Project Description
-It is necessary to conduct an analysis of real Yandex.Music data using the Pandas library to compare the behavior and preferences of users from two capitals - Moscow and St. Petersburg.
+Investigate the influence of a client's marital status and number of children on loan repayment.
+
 
 ## Skills and Tools
 
