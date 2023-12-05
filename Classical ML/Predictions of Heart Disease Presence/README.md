@@ -42,7 +42,7 @@ The goal is to develop a model that predicts the probability of heart disease in
 
 Best model:
 
-* RandomForestClassifier - Recall - 88.2%
+* RandomForestClassifier - 1: Recall - 0.91%
 
 
 
